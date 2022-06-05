@@ -10,7 +10,8 @@ public class TennisGame2 : ITennisGame
     {
         new RunningScoreDisplayer(),
         new WinScoreDisplayer(),
-        new DeuceScoreDisplayer()
+        new DeuceScoreDisplayer(),
+        new AdvantageScoreDisplayer()
     };
 
     private int p1point;
@@ -85,16 +86,6 @@ public class TennisGame2 : ITennisGame
             if (p1point == 2)
                 p1res = "Thirty";
             score = p1res + "-" + p2res;
-        }
-
-        if (p1point > p2point && p2point >= 3)
-        {
-            score = "Advantage player1";
-        }
-
-        if (p2point > p1point && p1point >= 3)
-        {
-            score = "Advantage player2";
         }
 
         return score;
