@@ -6,6 +6,7 @@ public class TennisGame2 : ITennisGame
 {
     private static readonly IEnumerable<IScoreDisplayer> ScoreDisplayers = new List<IScoreDisplayer>
     {
+        //order could be changed to improve performance based on usage data
         new EqualRunningScoreDisplayer(),
         new WinScoreDisplayer(),
         new DeuceScoreDisplayer(),
@@ -27,7 +28,7 @@ public class TennisGame2 : ITennisGame
 
     public string GetScore()
     {
-            return ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
+        return ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
     }
 
     public void SetP1Score(int number)
