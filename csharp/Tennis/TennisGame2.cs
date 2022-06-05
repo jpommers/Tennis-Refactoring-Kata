@@ -28,7 +28,7 @@ public class TennisGame2 : ITennisGame
 
     public string GetScore()
     {
-        return ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
+        return ScoreDisplayers.SingleOrDefault(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point)??string.Empty;
     }
 
     public void SetP1Score(int number)
