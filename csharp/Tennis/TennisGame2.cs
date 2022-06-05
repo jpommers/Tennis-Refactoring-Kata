@@ -8,17 +8,16 @@ public class TennisGame2 : ITennisGame
 {
     private static readonly IEnumerable<IScoreDisplayer> ScoreDisplayers = new List<IScoreDisplayer>
     {
-        new RunningScoreDisplayer(),
+        new EqualRunningScoreDisplayer(),
         new WinScoreDisplayer(),
         new DeuceScoreDisplayer(),
-        new AdvantageScoreDisplayer()
+        new AdvantageScoreDisplayer(),
+        new DifferentRunningScoreDisplayer()
     };
 
     private int p1point;
     private int p2point;
 
-    private string p1res = "";
-    private string p2res = "";
     private readonly string player1Name;
     private readonly string player2Name;
 
@@ -36,56 +35,6 @@ public class TennisGame2 : ITennisGame
         {
             score = ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
             return score;
-        }
-
-        if (p1point > 0 && p2point == 0)
-        {
-            if (p1point == 1)
-                p1res = "Fifteen";
-            if (p1point == 2)
-                p1res = "Thirty";
-            if (p1point == 3)
-                p1res = "Forty";
-
-            p2res = "Love";
-            score = p1res + "-" + p2res;
-        }
-        if (p2point > 0 && p1point == 0)
-        {
-            if (p2point == 1)
-                p2res = "Fifteen";
-            if (p2point == 2)
-                p2res = "Thirty";
-            if (p2point == 3)
-                p2res = "Forty";
-
-            p1res = "Love";
-            score = p1res + "-" + p2res;
-        }
-
-        if (p1point > p2point && p1point < 4)
-        {
-            if (p1point == 2)
-                p1res = "Thirty";
-            if (p1point == 3)
-                p1res = "Forty";
-            if (p2point == 1)
-                p2res = "Fifteen";
-            if (p2point == 2)
-                p2res = "Thirty";
-            score = p1res + "-" + p2res;
-        }
-        if (p2point > p1point && p2point < 4)
-        {
-            if (p2point == 2)
-                p2res = "Thirty";
-            if (p2point == 3)
-                p2res = "Forty";
-            if (p1point == 1)
-                p1res = "Fifteen";
-            if (p1point == 2)
-                p1res = "Thirty";
-            score = p1res + "-" + p2res;
         }
 
         return score;

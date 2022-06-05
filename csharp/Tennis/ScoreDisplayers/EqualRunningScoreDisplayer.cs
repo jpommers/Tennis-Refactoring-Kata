@@ -1,6 +1,6 @@
 ﻿namespace Tennis.ScoreDisplayers;
 
-public class RunningScoreDisplayer : IScoreDisplayer
+public class EqualRunningScoreDisplayer : IScoreDisplayer
 {
     public bool CanDisplay(int p1point, int p2point)
     {
