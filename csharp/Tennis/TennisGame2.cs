@@ -24,20 +24,12 @@ public class TennisGame2 : ITennisGame
     public TennisGame2(string player1Name, string player2Name)
     {
         this.player1Name = player1Name;
-        p1point = 0;
         this.player2Name = player2Name;
     }
 
     public string GetScore()
     {
-        var score = "";
-        if (ScoreDisplayers.Any(x => x.CanDisplay(p1point, p2point)))
-        {
-            score = ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
-            return score;
-        }
-
-        return score;
+            return ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
     }
 
     public void SetP1Score(int number)
