@@ -62,10 +62,12 @@ public class TennisGame2 : ITennisGame
 
     public void WonPoint(string playerName)
     {
-        if (playerName == "player1")
+        if (playerName == player1Name)
             P1Score();
-        else
+        else if (playerName == player2Name)
             P2Score();
+        else
+            throw new ArgumentException($"Player with name {playerName} not found", nameof(playerName));
     }
 
 }
