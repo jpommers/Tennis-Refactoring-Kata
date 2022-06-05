@@ -9,6 +9,6 @@ public class EqualRunningScoreDisplayer : IScoreDisplayer
 
     public string Display(int p1point, int p2point)
     {
-        return $"{ScoreDisplayConstants.PointNameMap[p1point]} - All";
+        return $"{ScoreDisplayConstants.PointNameMap[p1point]}-All";
     }
 }
