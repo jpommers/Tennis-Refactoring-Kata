@@ -8,7 +8,8 @@ namespace Tennis
     {
         private static readonly IEnumerable<IScoreDisplayer> ScoreDisplayers = new List<IScoreDisplayer>
         {
-            new RunningScoreDisplayer()
+            new RunningScoreDisplayer(),
+            new WinScoreDisplayer()
         };
 
         private int p1point;
@@ -32,6 +33,7 @@ namespace Tennis
             if (ScoreDisplayers.Any(x => x.CanDisplay(p1point, p2point)))
             {
                 score = ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
+                return score;
             }
             if (p1point == p2point && p1point > 2)
                 score = "Deuce";
@@ -96,14 +98,6 @@ namespace Tennis
                 score = "Advantage player2";
             }
 
-            if (p1point >= 4 && p2point >= 0 && (p1point - p2point) >= 2)
-            {
-                score = "Win for player1";
-            }
-            if (p2point >= 4 && p1point >= 0 && (p2point - p1point) >= 2)
-            {
-                score = "Win for player2";
-            }
             return score;
         }
 
