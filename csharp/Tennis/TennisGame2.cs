@@ -7,8 +7,8 @@ namespace Tennis
 
         private string p1res = "";
         private string p2res = "";
-        private string player1Name;
-        private string player2Name;
+        private readonly string player1Name;
+        private readonly string player2Name;
 
         public TennisGame2(string player1Name, string player2Name)
         {
@@ -106,18 +106,12 @@ namespace Tennis
 
         public void SetP1Score(int number)
         {
-            for (int i = 0; i < number; i++)
-            {
-                P1Score();
-            }
+            p1point = number;
         }
 
         public void SetP2Score(int number)
         {
-            for (var i = 0; i < number; i++)
-            {
-                P2Score();
-            }
+            p2point = number;
         }
 
         private void P1Score()
@@ -130,9 +124,9 @@ namespace Tennis
             p2point++;
         }
 
-        public void WonPoint(string player)
+        public void WonPoint(string playerName)
         {
-            if (player == "player1")
+            if (playerName == "player1")
                 P1Score();
             else
                 P2Score();
