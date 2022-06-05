@@ -6,7 +6,7 @@ public class TennisGame2 : ITennisGame
 {
     private static readonly IEnumerable<IScoreDisplayer> ScoreDisplayers = new List<IScoreDisplayer>
     {
-        //order could be changed to improve performance based on usage data
+        //NOTE(JP): order could be changed to improve performance based on usage data
         new EqualRunningScoreDisplayer(),
         new WinScoreDisplayer(),
         new DeuceScoreDisplayer(),

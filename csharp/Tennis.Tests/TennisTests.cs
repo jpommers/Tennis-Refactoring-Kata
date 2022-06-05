@@ -7,6 +7,9 @@ namespace Tennis.Tests
 {
     public class TestDataGenerator : IEnumerable<object[]>
     {
+        //NOTE(JP): not completely clear about expected output when providing custom player name
+        //Does player1 imply it is the first player or that the players name is "player1"?
+        //assuming it' s the first case for now
         private readonly List<object[]> _data = new List<object[]>
         {
             new object[] {0, 0, "Love-All"},
