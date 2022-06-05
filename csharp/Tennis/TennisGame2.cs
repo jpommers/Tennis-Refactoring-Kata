@@ -1,7 +1,16 @@
+using System.Collections.Generic;
+using System.Linq;
+using Tennis.ScoreDisplayers;
+
 namespace Tennis
 {
     public class TennisGame2 : ITennisGame
     {
+        private static readonly IEnumerable<IScoreDisplayer> ScoreDisplayers = new List<IScoreDisplayer>
+        {
+            new RunningScoreDisplayer()
+        };
+
         private int p1point;
         private int p2point;
 
@@ -20,15 +29,9 @@ namespace Tennis
         public string GetScore()
         {
             var score = "";
-            if (p1point == p2point && p1point < 3)
+            if (ScoreDisplayers.Any(x => x.CanDisplay(p1point, p2point)))
             {
-                if (p1point == 0)
-                    score = "Love";
-                if (p1point == 1)
-                    score = "Fifteen";
-                if (p1point == 2)
-                    score = "Thirty";
-                score += "-All";
+                score = ScoreDisplayers.Single(x => x.CanDisplay(p1point, p2point)).Display(p1point, p2point);
             }
             if (p1point == p2point && p1point > 2)
                 score = "Deuce";
