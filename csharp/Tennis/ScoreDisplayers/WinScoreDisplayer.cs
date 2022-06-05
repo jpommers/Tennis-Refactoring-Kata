@@ -2,6 +2,9 @@
 
 public class WinScoreDisplayer : IScoreDisplayer
 {
+    private const string Player1WinScore = "Win for player1";
+    private const string Player2WinScore = "Win for player2";
+
     public bool CanDisplay(int p1point, int p2point)
     {
         return Math.Max(p1point, p2point) >= 4 && Math.Abs(p1point - p2point) >= 2;
@@ -9,12 +12,6 @@ public class WinScoreDisplayer : IScoreDisplayer
 
     public string Display(int p1point, int p2point)
     {
-        if(p1point > p2point)
-        {
-            return "Win for player1";
-        } else
-        {
-            return "Win for player2";
-        }
+        return (p1point > p2point) ? Player1WinScore : Player2WinScore;
     }
 }
