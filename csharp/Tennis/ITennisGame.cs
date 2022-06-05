@@ -1,9 +1,8 @@
-namespace Tennis
+namespace Tennis;
+
+public interface ITennisGame
 {
-    public interface ITennisGame
-    {
-        void WonPoint(string playerName);
-        string GetScore();
-    }
+    void WonPoint(string playerName);
+    string GetScore();
 }
 
