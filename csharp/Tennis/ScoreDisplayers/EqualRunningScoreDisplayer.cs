@@ -9,15 +9,6 @@ public class EqualRunningScoreDisplayer : IScoreDisplayer
 
     public string Display(int p1point, int p2point)
     {
-        var score = "";
-        if (p1point == 0)
-            score = "Love";
-        if (p1point == 1)
-            score = "Fifteen";
-        if (p1point == 2)
-            score = "Thirty";
-        score += "-All";
-
-        return score;
+        return $"{ScoreDisplayConstants.PointNameMap[p1point]} - All";
     }
 }
